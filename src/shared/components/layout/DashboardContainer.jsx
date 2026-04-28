@@ -1,38 +1,61 @@
-import { Navbar } from "./Navbar.jsx";
-import { Sidebar } from "./Sidebar.jsx";
- 
-export const DashboardContainer = ({ children }) => {
-    return (
-        /* bg-gray-100 (o gray-50) para que sea gris y cubra todo el alto */
-        <div className="min-h-screen bg-gray-100 flex flex-col">
-           
-            {/* Navbar */}
-            <Navbar />
- 
-            <div className="flex flex-1">
-               
-                {/* Sidebar */}
-                <Sidebar />
- 
-                {/* Área de contenido: Sin bordes, sin sombras, fondo gris uniforme */}
-                <main className="flex-1 bg-gray-100">
-                    <div className="p-8 h-full">
-                       
-                        {children || (
-                            <>
-                                <h1 className="text-2xl font-bold text-gray-700 mb-4">
-                                    Dashboard
-                                </h1>
-                                <div className="text-gray-500">
-                                    Contenido del menú
-                                </div>
-                            </>
-                        )}
- 
-                    </div>
-                </main>
- 
-            </div>
-        </div>
-    );
-};
+import { Navbar } from "./Navbar";
+import { Sidebar } from "./Sidebar";
+import { Outlet } from "react-router-dom";
+
+// VISTAS
+
+// features/auth
+//import { Spinner } from "@material-tailwind/react";
+//import { ResetPasswordForm } from "../../../features/auth/components/ResetPasswordForm";
+//import { ShowConfirmToast } from "../../../features/auth/components/ShowConfirmToast";
+
+
+// features/fields
+//import { Fields } from "../../../features/fields/components/Fields";
+//import { FieldModal } from "../../../features/fields/components/FieldModal";
+
+// features/teams
+//import { TeamModal } from "../../../features/teams/components/TeamModal";
+//import { Teams } from "../../../features/teams/components/Teams";
+
+//features/reservations
+//import { Reservations } from "../../../features/reservations/components/Reservations";
+
+// features/tournaments
+//import { TournamentModal } from "../../../features/tournaments/components/TournamentModal";
+//import { Tournaments } from "../../../features/tournaments/components/Tournaments";
+
+// features/userAdmin
+//import { Fields } from "../../../features/userAdmin/components/Fields";
+//import { Reservations } from "../../../features/userAdmin/components/Reservations";
+//import { Teams } from "../../../features/userAdmin/components/Teams";
+//import { Tournaments } from "../../../features/userAdmin/components/Tournamenst";
+
+// features/UserManagement
+//import { Settings } from "../../../features/userManagement/components/Settings";
+
+// features/users
+//import { CreateUserModal } from "../../../features/users/components/CreateUserModal";
+//import { Settings } from "../../../features/users/components/Settings";
+//import { UserComboBox } from "../../../features/users/components/UserComboBox";
+//import { UserDetailModal } from "../../../features/users/components/UserDetailModal";
+//import { Users } from "../../../features/users/components/Users";
+
+
+
+export const DashboardContainer = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Navbar /> 
+
+      <div className="flex flex-1">
+        <Sidebar />
+        
+        <main className="flex-1 p-6">
+          <Outlet />
+        </main>
+      </div>
+
+    </div>
+  );
+}

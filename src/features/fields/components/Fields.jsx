@@ -1,4 +1,25 @@
+import { useEffect, useState } from "react";
+import { useEffect as useToastEffect } from "react";
+
+import { useFieldsStore } from "../../auth/store/adminStore";
+import { useUIStore } from "../../auth/store/uiStore";
+
+import { showError } from "../../../shared/utils/toast";
+import { spinner } from "@material-tailwind/react";
+import { FieldModal } from "./FieldModal";
+
 export const Fields = () => {
+
+    const { fields, loading, error, getFields } = useFieldsStore();
+    const { openConfirm } = useUIStore();
+
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedField, setSelectedField] = useState(null);
+
+    useEffect(() => {
+        getFields();
+    }, [getFields]);
+
     return (
         <div className="p-4">
             {/* HEADER */}
